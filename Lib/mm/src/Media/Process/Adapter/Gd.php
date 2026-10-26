@@ -314,7 +314,13 @@ class Media_Process_Adapter_Gd extends Media_Process_Adapter {
 	}
 
 	protected function _isResource($image) {
-		return is_resource($image) && get_resource_type($image) == 'gd';
+		if (is_resource($image)) {
+			return get_resource_type($image) == 'gd';
+		}
+		if (is_object($image) && get_class($image) === 'GdImage') {
+			return true;
+		}
+		return false;
 	}
 
 	protected function _isTransparent($image) {
