@@ -92,7 +92,7 @@ class Media_Process_Adapter_Gd extends Media_Process_Adapter {
 		}
 
 		ob_start();
-		call_user_func_array('image' . $this->_format, $args);
+		call_user_func_array('image' . $this->_format, array_values($args));
 		$blob = ob_get_clean();
 
 		rewind($handle);

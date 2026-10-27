@@ -292,7 +292,7 @@ class GeneratorBehavior extends ModelBehavior {
 				$args = null;
 			}
 			if (method_exists($Media, $method)) {
-				$result = call_user_func_array(array($Media, $method), (array)$args);
+				$result = call_user_func_array(array($Media, $method), array_values((array)$args));
 			} else {
 				$result = $Media->passthru($method, $args);
 			}
